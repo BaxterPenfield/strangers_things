@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { Posts } from './components';
 const App = () => {
   return <div>
-    Hello World
+    <Posts />
   </div>
 }
 
