@@ -1,19 +1,16 @@
-import React, { useState } from "react";
-import { loginUser } from "..";
+import React, {useState} from "react";
+import { registerUser } from "..";
 
-function Login({token, setToken}) {
+function Register() {
   const [usernameString, setUsernameString] = useState("");
   const [passwordString, setPasswordString] = useState("");
   return (
     <form
-      id="login"
+      id="register"
       onSubmit={async (e) => {
         e.preventDefault();
         try {
-          await loginUser(usernameString, passwordString).then(results => {
-            setToken(results.data.token);
-            localStorage.setItem('jwt', token);
-          })
+          await registerUser(usernameString, passwordString);
         } catch (error) {
           console.error(error.message);
         }
@@ -42,10 +39,10 @@ function Login({token, setToken}) {
         />
       </fieldset>
       <fieldset>
-        <button>Login</button>
+        <button>Register Account</button>
       </fieldset>
     </form>
   );
 }
 
-export default Login;
+export default Register;

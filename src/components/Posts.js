@@ -25,8 +25,10 @@ const Posts = () => {
           {posts.map((post) => {
               return (
                   <div className="post">
+                    <div className="post-heading">
                       <span className="username">{post.author.username}</span>
                       <span className="title">{post.title}</span>
+                    </div>
                       <span className="post-content">{post.description}</span>
                       <span className="price">Price - {post.price}</span>
                   </div>
