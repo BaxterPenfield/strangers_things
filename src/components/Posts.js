@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { fetchPosts } from "../api";
 
-const Posts = () => {
+const Posts = ({token}) => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetchPosts().then((value) => {
+    fetchPosts(token).then((value) => {
         setPosts(value);
       })
       .catch((error) => {
@@ -26,11 +26,11 @@ const Posts = () => {
               return (
                   <div className="post">
                     <div className="post-heading">
-                      <span className="username">{post.author.username}</span>
-                      <span className="title">{post.title}</span>
+                      <span className="post-username">{post.author.username}</span>
+                      <span className="post-title">{post.title}</span>
                     </div>
                       <span className="post-content">{post.description}</span>
-                      <span className="price">Price - {post.price}</span>
+                      <span className="post-price">Price - {post.price}</span>
                   </div>
               )
           })}

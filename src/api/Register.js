@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { registerUser } from "..";
+import { registerUser } from "./index";
 
 function Register() {
   const [usernameString, setUsernameString] = useState("");

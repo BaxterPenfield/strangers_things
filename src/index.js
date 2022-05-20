@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-import { Posts, UserInfo } from './components';
-import Register from './api/login/Register';
-import Login from './api/login/Login';
+import { Posts, UserInfo, Title } from './components';
+import Login from './api/Login';
 
 const App = () => {
-  const [token, setToken] = useState("")
+  const tokenFromStorage = localStorage.getItem("jwt")
+  const [token, setToken] = useState(tokenFromStorage)
   return <div>
-    <Posts />
-    <Register />
+    <Title />
+    <Posts token={token}/>
     <Login token={token} setToken={setToken} />
-    <UserInfo/>
+    <UserInfo token={token}/>
   </div>
 }
 

@@ -1,9 +1,23 @@
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-export async function fetchPosts() {
+const makeHeaders = (token) => {
+  let headers = {
+    'Content-Type': 'application/json',
+  }
+
+  if (token){
+    headers['Authorization'] = 'Bearer ' + token
+  }
+  return headers
+}
+
+export async function fetchPosts(token) {
   const url = `${BASE_URL}/posts`;
   try {
-    const response = await fetch(url);
+    const response = await fetch(url ,{
+      method: "GET",
+      headers: makeHeaders(token)
+    });
     const data = await response.json();
     const posts = data.data.posts;
     return posts;
@@ -51,14 +65,12 @@ export async function loginUser(username, password) {
   } catch (error) {}
 }
 
-export async function getUserInfo() {
+export async function getUserInfo(token) {
   const url = `${BASE_URL}/users/me`;
   try {
     const response = await fetch(url, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": localStorage.getItem("jwt"),
-      },
+      method: "GET",
+      headers: makeHeaders(token)
     });
     const data = await response.json();
     console.log(data);

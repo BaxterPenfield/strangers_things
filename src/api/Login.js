@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { loginUser } from "..";
+import { loginUser } from ".";
 
-function Login({token, setToken}) {
+function Login({setToken}) {
   const [usernameString, setUsernameString] = useState("");
   const [passwordString, setPasswordString] = useState("");
   return (
@@ -12,7 +12,7 @@ function Login({token, setToken}) {
         try {
           await loginUser(usernameString, passwordString).then(results => {
             setToken(results.data.token);
-            localStorage.setItem('jwt', token);
+            localStorage.setItem('jwt', results.data.token);
           })
         } catch (error) {
           console.error(error.message);
@@ -47,5 +47,7 @@ function Login({token, setToken}) {
     </form>
   );
 }
+
+
 
 export default Login;

@@ -1,3 +1,40 @@
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#title {
+  grid-row: 1;
+  background-color: steelblue;
+  grid-column: 1 / -1;
+  padding: 8px;
+  text-align: center;
+  color: white;
+}
+
+#header {
+  display: inline-block;
+  position: sticky;
+  left: 0;
+  right: 0;
+}
+
+#title h1 {
+  font-family: "Parisienne", cursive;
+  font-size: 3.2rem;
+}
+
+#title h5 {
+  font-size: 1rem;
+}
+
+#register-login {
+  display: flex;
+  justify-content: right;
+}
+
 .posts {
   display: flex;
   flex-direction: column;
@@ -13,7 +50,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.username {
+.post-username {
   color: black;
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   font-size: 21px;
@@ -25,7 +62,7 @@
   font-variant: normal;
   text-transform: none;
 }
-.title {
+.post-title {
   color: black;
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   font-size: 21px;

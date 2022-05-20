@@ -1,11 +1,11 @@
 import React from 'react'
 import { getUserInfo } from '../api';
 
-function UserInfo() {
+function UserInfo({token}) {
   return (
     <button onClick={async (e) => {
         e.preventDefault();
-        getUserInfo().then(results => {
+        getUserInfo(token).then(results => {
             console.log(results);
         })
 
