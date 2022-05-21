@@ -21,14 +21,12 @@ const Posts = ({token}) => {
 //     } 
 //   }
   return (
-      <div className="posts">
+      <div className="post-display">
           {posts.map((post) => {
               return (
-                  <div className="post">
-                    <div className="post-heading">
+                  <div className="post-content">
                       <span className="post-username">{post.author.username}</span>
                       <span className="post-title">{post.title}</span>
-                    </div>
                       <span className="post-content">{post.description}</span>
                       <span className="post-price">Price - {post.price}</span>
                   </div>

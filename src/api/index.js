@@ -77,3 +77,4 @@ export async function getUserInfo(token) {
     return data;
   } catch (error) {}
 }
+

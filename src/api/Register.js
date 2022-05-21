@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import { registerUser } from "./index";
 
-function Register() {
+const Register = ({setIsLoggingIn}) => {
   const [usernameString, setUsernameString] = useState("");
   const [passwordString, setPasswordString] = useState("");
   return (
+    <>
     <form
       id="register"
       onSubmit={async (e) => {
@@ -42,6 +43,14 @@ function Register() {
         <button>Register Account</button>
       </fieldset>
     </form>
+    <button
+          onClick={() => {
+            setIsLoggingIn(true);
+          }}
+        >
+          Already signed up? Log in here
+        </button>
+    </>
   );
 }
 

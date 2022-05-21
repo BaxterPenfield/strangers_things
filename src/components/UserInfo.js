@@ -1,16 +1,23 @@
-import React from 'react'
-import { getUserInfo } from '../api';
+import React, { useEffect, useState } from "react";
+import { getUserInfo } from "../api";
 
-function UserInfo({token}) {
+const UserInfo = ({ token, userDisplay }) => {
+  const [userData, setUserData] = useState({});
+  useEffect(async () => {
+    await getUserInfo(token)
+      .then((results) => {
+        setUserData(results.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [userDisplay]);
+  
   return (
-    <button onClick={async (e) => {
-        e.preventDefault();
-        getUserInfo(token).then(results => {
-            console.log(results);
-        })
-
-    }}>My information</button>
+    <div id="user-display">
+      <div className="user-username">{userData.username}</div>
+    </div>
   )
-}
+};
 
-export default UserInfo
+export default UserInfo;
