@@ -22,7 +22,7 @@ body {
   overflow: hidden;
 }
 
-#login {
+#login-background {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -40,15 +40,39 @@ body {
   text-align: center;
 }
 
-#login-form {
+#login {
+  width: 80%;
+  height: 80%;
   background-color: white;
-  border-radius: 25%;
-  width: 250px;
-  height: 400px;
+  border-radius: 4%;
+  text-align: center;
+}
+#post-messages {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 25%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+  
+    font-family: "Roboto", sans-serif;
+    font-size: 2rem;
+    text-align: center;
 }
 
-#username-login,
-#password-login {
+#login-form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10%;
+  margin-bottom: 100px;
+}
+#password-login, #username-login {
+    border: 1px solid black;
+
 }
 
 #title {

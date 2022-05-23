@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { loginUser } from ".";
+// import { Link } from "react-router-dom";
 
-const Login = ({ setToken, setIsLoggingIn }) => {
+const Login = ({ setToken }) => {
   const [usernameString, setUsernameString] = useState("");
   const [passwordString, setPasswordString] = useState("");
   return (
-    <div id="login">
+    <div id="login-background">
+      <div id="login">
       <form
         id="login-form"
         onSubmit={async (e) => {
@@ -18,7 +20,7 @@ const Login = ({ setToken, setIsLoggingIn }) => {
           } catch (error) {
             console.error(error.message);
           } finally {
-            setIsLoggingIn(false);
+            
           }
         }}
       >
@@ -45,9 +47,11 @@ const Login = ({ setToken, setIsLoggingIn }) => {
           />
         </fieldset>
         <fieldset>
-          <button>Login</button>
+          <button type="submit">Login</button>
         </fieldset>
+      
       </form>
+      </div>
     </div>
   );
 }

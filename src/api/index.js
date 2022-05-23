@@ -2,21 +2,21 @@ export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const makeHeaders = (token) => {
   let headers = {
-    'Content-Type': 'application/json',
-  }
+    "Content-Type": "application/json",
+  };
 
-  if (token){
-    headers['Authorization'] = 'Bearer ' + token
+  if (token) {
+    headers["Authorization"] = "Bearer " + token;
   }
-  return headers
-}
+  return headers;
+};
 
 export async function fetchPosts(token) {
   const url = `${BASE_URL}/posts`;
   try {
-    const response = await fetch(url ,{
+    const response = await fetch(url, {
       method: "GET",
-      headers: makeHeaders(token)
+      headers: makeHeaders(token),
     });
     const data = await response.json();
     const posts = data.data.posts;
@@ -70,7 +70,7 @@ export async function getUserInfo(token) {
   try {
     const response = await fetch(url, {
       method: "GET",
-      headers: makeHeaders(token)
+      headers: makeHeaders(token),
     });
     const data = await response.json();
     console.log(data);
@@ -78,3 +78,44 @@ export async function getUserInfo(token) {
   } catch (error) {}
 }
 
+export async function createPost(
+  token,
+  titleStr,
+  descStr,
+  priceStr,
+  deliverBool
+) {
+  const url = `${BASE_URL}/posts`;
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: makeHeaders(token),
+      body: JSON.stringify({
+        post: {
+          title: titleStr,
+          description: descStr,
+          price: priceStr,
+          willDeliver: deliverBool,
+        },
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function getSinglePost(postID, token) {
+  const url = `${BASE_URL}/posts/${postID}`
+  try {
+  const response = await fetch(url, {
+    method: "GET",
+    headers: makeHeaders(token)
+  })
+  const data = await response.json();
+  return data;
+} catch (error) {
+  console.error(error);
+}}

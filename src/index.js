@@ -1,24 +1,31 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { Posts, Title, UserInfo } from "./components";
+import { Posts, Title, UserInfo, Messages } from "./components";
 import Login from "./api/Login";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const App = () => {
   const tokenFromStorage = localStorage.getItem("jwt");
   const [token, setToken] = useState(tokenFromStorage);
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [userDisplay, setUserDisplay] = useState(false);
   return (
     <div className="app">
-      <Title
-        setToken={setToken}
-        setIsLoggingIn={setIsLoggingIn}
-        setUserDisplay={setUserDisplay}
-        token={token}
-      />
-      <Posts token={token} />
-      {isLoggingIn ? <Login token={token} setToken={setToken} /> : null}
-      {userDisplay ? <UserInfo token={token} userDisplay={userDisplay}/> : null}
+      <Router>
+        <Title setToken={setToken} token={token} />
+        <Switch>
+          <Route exact path="/">
+            <Posts token={token} />
+          </Route>
+          <Route path="/login">
+            <Login setToken={setToken} />
+          </Route>
+          <Route path="/profile">
+            <UserInfo token={token} />
+          </Route>
+          {/* <Route path="/messages">
+            <Messages />
+          </Route> */}
+        </Switch>
+      </Router>
     </div>
   );
 };
